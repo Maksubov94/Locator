@@ -3,6 +3,7 @@ package com.maksubov.locator
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.maksubov.locator.databinding.ActivityMainBinding
@@ -19,8 +20,20 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController)
         val colorDrawable = ColorDrawable(getColor(R.color.blue))
         supportActionBar?.setBackgroundDrawable(colorDrawable)
-    }
 
+
+
+    }
+    private fun askPermissions() {
+        registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) {
+            it.getOrDefault(android.Manifest.permission.ACCESS_FINE_LOCATION, false) &&
+                    it.getOrDefault(android.Manifest.permission.ACCESS_COARSE_LOCATION, false)
+        }.launch(arrayOf(
+            android.Manifest.permission.ACCESS_FINE_LOCATION,
+            android.Manifest.permission.ACCESS_COARSE_LOCATION
+        ))
+
+    }
 
     override fun onSupportNavigateUp(): Boolean {
         return super.onSupportNavigateUp()
