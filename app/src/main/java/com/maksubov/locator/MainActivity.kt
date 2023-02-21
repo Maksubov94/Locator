@@ -12,6 +12,8 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
+    private val logger = Logger(this)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -20,14 +22,15 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController)
         val colorDrawable = ColorDrawable(getColor(R.color.blue))
         supportActionBar?.setBackgroundDrawable(colorDrawable)
-
-
-
+        askPermissions()
     }
+
     private fun askPermissions() {
         registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) {
-            it.getOrDefault(android.Manifest.permission.ACCESS_FINE_LOCATION, false) &&
-                    it.getOrDefault(android.Manifest.permission.ACCESS_COARSE_LOCATION, false)
+            if(it.getOrDefault(android.Manifest.permission.ACCESS_FINE_LOCATION, false) &&
+                    it.getOrDefault(android.Manifest.permission.ACCESS_COARSE_LOCATION, false)){
+                LocationSource.startListening(this)
+            }
         }.launch(arrayOf(
             android.Manifest.permission.ACCESS_FINE_LOCATION,
             android.Manifest.permission.ACCESS_COARSE_LOCATION
@@ -37,5 +40,15 @@ class MainActivity : AppCompatActivity() {
 
     override fun onSupportNavigateUp(): Boolean {
         return super.onSupportNavigateUp()
+    }
+
+
+    override fun onDestroy() {
+        try{
+
+        } catch (e: Exception){
+            logger.log(e.stackTraceToString())
+        }
+        super.onDestroy()
     }
 }
