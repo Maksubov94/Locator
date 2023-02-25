@@ -1,5 +1,6 @@
 package com.maksubov.locator
 
+import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -23,6 +24,7 @@ class MainActivity : AppCompatActivity() {
         val colorDrawable = ColorDrawable(getColor(R.color.blue))
         supportActionBar?.setBackgroundDrawable(colorDrawable)
         askPermissions()
+        startForegroundService(Intent(this, FgLocationService::class.java))
     }
 
     private fun askPermissions() {

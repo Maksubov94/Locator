@@ -8,7 +8,7 @@
 
     <TextView
         android:id="@+id/textView"
-        android:textSize="23dp"
+        android:textSize="23sp"
         android:layout_width="122dp"
         android:layout_height="44dp"
         android:layout_marginTop="84dp"
@@ -26,13 +26,13 @@
         android:layout_marginTop="84dp"
         android:gravity="center"
         android:text="Start"
-        android:textSize="23dp"
+        android:textSize="23sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView3"
-        android:textSize="23dp"
+        android:textSize="23sp"
         android:layout_width="122dp"
         android:layout_height="44dp"
         android:layout_marginTop="60dp"
@@ -44,7 +44,7 @@
 
     <TextView
         android:id="@+id/textView4"
-        android:textSize="23dp"
+        android:textSize="23sp"
         android:layout_width="122dp"
         android:layout_height="44dp"
         android:layout_marginTop="60dp"
