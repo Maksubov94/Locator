@@ -48,13 +48,15 @@ class HomeFragment: Fragment() {
             }
 
         }, viewLifecycleOwner)
-//        lifecycleScope.launchWhenResumed {
-//            withContext(Dispatchers.IO){
-//                delay(2000)
-//            }
-//            withContext(Dispatchers.Main) {
-//                findNavController().navigate(R.id.action_homeFragment_to_detailsFragment)
-//            }
-//        }
+     //   text()
     }
+
+
+//    fun text(){
+//        binding.idText1.setOnClickListener(){
+//            var change = "hello world magamed"
+//            binding.idText2.text = change
+//        }
+//    }
+
 }

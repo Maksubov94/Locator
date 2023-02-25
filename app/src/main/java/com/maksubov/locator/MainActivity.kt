@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
-    private val logger = Logger(this)
+//    private val logger = Logger(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,11 +44,11 @@ class MainActivity : AppCompatActivity() {
 
 
     override fun onDestroy() {
-        try{
-
-        } catch (e: Exception){
-            logger.log(e.stackTraceToString())
-        }
+//        try{
+//
+//        } catch (e: Exception){
+//            logger.log(e.stackTraceToString())
+//        }
         super.onDestroy()
     }
 }
