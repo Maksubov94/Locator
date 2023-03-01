@@ -1,4 +1,4 @@
-package com.maksubov.locator
+package com.maksubov.locator.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

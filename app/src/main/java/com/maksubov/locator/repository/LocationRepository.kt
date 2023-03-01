@@ -1,4 +1,4 @@
-package com.maksubov.locator
+package com.maksubov.locator.repository
 
 import android.location.Location
 
