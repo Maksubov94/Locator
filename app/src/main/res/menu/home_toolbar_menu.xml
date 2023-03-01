@@ -10,9 +10,10 @@
         />
 
     <item
-        android:id="@+id/hello2_toolbar"
+        android:id="@+id/idExit"
         app:showAsAction="never"
-        android:title="HELLO2"
+        android:title="@string/exit"
+
         />
 
 

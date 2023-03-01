@@ -4,6 +4,7 @@ import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.Service
+import android.content.Context
 import android.content.Intent
 import android.os.IBinder
 import androidx.core.app.NotificationCompat
@@ -32,6 +33,7 @@ class FgLocationService: Service(){
     }
 
     private fun subscribeLocation() {
+
         serviceScope.launch {
             LocationSource.startListening(this@FgLocationService)
             LocationSource.locationFlow.collectLatest {
@@ -40,11 +42,19 @@ class FgLocationService: Service(){
         }
     }
 
-
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         startForeground(NOTIFICATION_SERVICE_ID, createNotification())
         return START_STICKY
     }
+
+    override fun stopService(name: Intent?): Boolean {
+
+        return super.stopService(name)
+    }
+//    fun stopService(context: Context) {
+//        val stopIntent = Intent(context, FgLocationService::class.java)
+//        context.stopService(stopIntent)}
+
 
     private fun createNotification(): Notification {
         return NotificationCompat.Builder(applicationContext, NOTIFICATION_CHANNEL)
@@ -57,6 +67,7 @@ class FgLocationService: Service(){
     }
 
     private fun createNotificationChannel() {
+
         val channel = NotificationChannel(
             NOTIFICATION_CHANNEL,
             NOTIFICATION_CHANNEL_NAME,
@@ -65,6 +76,5 @@ class FgLocationService: Service(){
         val notificationManager = getSystemService(NotificationManager::class.java)
         notificationManager.createNotificationChannel(channel)
     }
-
 
 }

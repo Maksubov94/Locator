@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
-//    private val logger = Logger(this)
+  //  private  val logger = Logger(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +25,12 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.setBackgroundDrawable(colorDrawable)
         askPermissions()
         startForegroundService(Intent(this, FgLocationService::class.java))
+
+
+//        stopService(Intent(this,FgLocationService::class.java))
+
+        // а так можно?
+      //  this.startService(Intent(this,FgLocationService::class.java))
     }
 
     private fun askPermissions() {

@@ -1,12 +1,17 @@
 package com.maksubov.locator.ui
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import android.widget.Toast
+import androidx.core.app.ActivityCompat.finishAffinity
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.maksubov.locator.FgLocationService
+import com.maksubov.locator.MainActivity
 import com.maksubov.locator.R
 import com.maksubov.locator.databinding.HomeFragmentLayoutBinding
 import kotlinx.coroutines.Dispatchers
@@ -15,9 +20,7 @@ import kotlinx.coroutines.withContext
 
 class HomeFragment: Fragment() {
 
-
     private lateinit var binding: HomeFragmentLayoutBinding
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,35 +31,35 @@ class HomeFragment: Fragment() {
         return binding.root
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        requireActivity().addMenuProvider(object: MenuProvider{
+        requireActivity().addMenuProvider(object : MenuProvider {
 
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
                 menuInflater.inflate(R.menu.home_toolbar_menu, menu)
             }
 
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-                when(menuItem.itemId){
+                when (menuItem.itemId) {
                     R.id.hello_toolbar -> {
                         Toast.makeText(requireContext(), "HELLO PRESSED", Toast.LENGTH_LONG).show()
                     }
-                    R.id.hello2_toolbar -> {}
+                    R.id.idExit -> { stopService(context!!)}
                 }
                 return true
             }
-
         }, viewLifecycleOwner)
-     //   text()
+
+        // зачем мы добавили viewLifecycleOwner, для чего
+
     }
+    fun stopService(context: Context) {
+        val stopIntent = Intent(context, FgLocationService::class.java)
+        context.stopService(stopIntent)
+        activity?.finish()
+           }
 
-
-//    fun text(){
-//        binding.idText1.setOnClickListener(){
-//            var change = "hello world magamed"
-//            binding.idText2.text = change
-//        }
-//    }
 
 }
+
+
