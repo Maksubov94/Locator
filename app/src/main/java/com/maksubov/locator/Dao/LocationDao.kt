@@ -14,7 +14,7 @@ interface LocationDao {
     suspend fun insertLocation(location: Location)
 
     @Query("SELECT*FROM Location")
-    fun getAllDate(): List<Location>
+    fun getAllDate(): MutableList<Location>
 
     @Update
     suspend fun updateLocation(location: Location)
