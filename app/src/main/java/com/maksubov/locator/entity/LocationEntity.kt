@@ -1,26 +1,13 @@
 package com.maksubov.locator.entity
 
-import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import java.util.Date
 
-@Entity(tableName = "Location")
+@Entity(tableName = "location")
 data class LocationEntity(
-
-    @PrimaryKey(autoGenerate = true)
-    var id: String,
-
-    @ColumnInfo(name = "Street")
-    var street: String,
-
-    @ColumnInfo(name = "City")
-    var city: String,
-
-    @ColumnInfo(name = "Date")
-    var date: Date,
-
-    @ColumnInfo(name = "Period")
-    var time: Double,
-
+    @PrimaryKey
+    val id: String,
+    val latitude: Double,
+    val longitude: Double,
+    val timeStamp: Long
 )

@@ -8,8 +8,10 @@ import android.content.Context
 import android.content.Intent
 import android.os.IBinder
 import androidx.core.app.NotificationCompat
+import com.maksubov.locator.data.repository.LocationRepository
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.collectLatest
+import org.koin.android.ext.android.inject
 
 
 class FgLocationService: Service(){
@@ -22,6 +24,8 @@ class FgLocationService: Service(){
 
     private val serviceScope: CoroutineScope = CoroutineScope(Job() + Dispatchers.IO)
 
+    private val locRepo: LocationRepository by inject()
+
 
     override fun onBind(intent: Intent?): IBinder? = null
 
@@ -33,11 +37,10 @@ class FgLocationService: Service(){
     }
 
     private fun subscribeLocation() {
-
+        LocationSource.startListening(this)
         serviceScope.launch {
-            LocationSource.startListening(this@FgLocationService)
             LocationSource.locationFlow.collectLatest {
-
+                locRepo.addNewLocation(it.toLocationEntity())
             }
         }
     }

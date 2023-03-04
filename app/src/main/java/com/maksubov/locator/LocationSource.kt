@@ -22,7 +22,9 @@ object LocationSource {
 
     private var locationManager: LocationManager? = null
 
-    private val localScope = CoroutineScope(Job() + Dispatchers.IO)
+    private val localScope = CoroutineScope(SupervisorJob() + Dispatchers.IO + CoroutineExceptionHandler{ context, ex->
+
+    })
 
 
     private fun initialize(context: Context) {
@@ -42,9 +44,9 @@ object LocationSource {
             ) == PackageManager.PERMISSION_GRANTED
         ) {
             initialize(context)
-            locationManager?.let {
-//                requestLocationUpdates(LocationManager.GPS_PROVIDER, 0L, 0f, gpsListener)
-  //              requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0L, 0f, netListener)
+            locationManager?.apply {
+                requestLocationUpdates(LocationManager.GPS_PROVIDER, 0L, 0f, gpsListener)
+                requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0L, 0f, netListener)
             }
             true
         } else false
@@ -75,6 +77,7 @@ object LocationSource {
         override fun onLocationChanged(location: Location) {
             currentLocation = location
             localScope.launch {
+
                 _locationFlow.emit(location)
             }
         }
