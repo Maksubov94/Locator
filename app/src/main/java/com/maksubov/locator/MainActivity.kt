@@ -36,18 +36,21 @@ class MainActivity : AppCompatActivity() {
     private fun askPermissions() {
         registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) {
             if(it.getOrDefault(android.Manifest.permission.ACCESS_FINE_LOCATION, false) &&
-                    it.getOrDefault(android.Manifest.permission.ACCESS_COARSE_LOCATION, false)){
+                    it.getOrDefault(android.Manifest.permission.ACCESS_COARSE_LOCATION, false)&&
+                it.getOrDefault(android.Manifest.permission.ACCESS_BACKGROUND_LOCATION,false)){
                 LocationSource.startListening(this)
             }
         }.launch(arrayOf(
             android.Manifest.permission.ACCESS_FINE_LOCATION,
-            android.Manifest.permission.ACCESS_COARSE_LOCATION
+            android.Manifest.permission.ACCESS_COARSE_LOCATION,
+            android.Manifest.permission.ACCESS_BACKGROUND_LOCATION
         ))
 
     }
 
     override fun onSupportNavigateUp(): Boolean {
         return super.onSupportNavigateUp()
+
     }
 
 
