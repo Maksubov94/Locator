@@ -45,11 +45,16 @@ object LocationSource {
         ) {
             initialize(context)
             locationManager?.apply {
-                requestLocationUpdates(LocationManager.GPS_PROVIDER, 0L, 0f, gpsListener)
-                requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0L, 0f, netListener)
+                requestLocationUpdates(LocationManager.GPS_PROVIDER, 0L, 5f, gpsListener)
+                requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0L, 5f, netListener)
             }
             true
         } else false
+    }
+
+    fun stopListening(){
+        locationManager?.removeUpdates(gpsListener)
+        locationManager?.removeUpdates(netListener)
     }
 
     fun getBestLocation(): Location?{

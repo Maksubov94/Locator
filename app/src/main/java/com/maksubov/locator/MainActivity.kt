@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
 //        stopService(Intent(this,FgLocationService::class.java))
 
         // а так можно?
-      //  this.startService(Intent(this,FgLocationService::class.java))
+      //  startService(Intent(this,FgLocationService::class.java))
     }
 
     private fun askPermissions() {
@@ -45,13 +45,13 @@ class MainActivity : AppCompatActivity() {
             android.Manifest.permission.ACCESS_COARSE_LOCATION,
             android.Manifest.permission.ACCESS_BACKGROUND_LOCATION
         ))
-
     }
 
     override fun onSupportNavigateUp(): Boolean {
         return super.onSupportNavigateUp()
 
     }
+
 
 
     override fun onDestroy() {

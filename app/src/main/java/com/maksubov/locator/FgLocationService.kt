@@ -70,7 +70,6 @@ class FgLocationService: Service(){
     }
 
     private fun createNotificationChannel() {
-
         val channel = NotificationChannel(
             NOTIFICATION_CHANNEL,
             NOTIFICATION_CHANNEL_NAME,
@@ -78,6 +77,11 @@ class FgLocationService: Service(){
         )
         val notificationManager = getSystemService(NotificationManager::class.java)
         notificationManager.createNotificationChannel(channel)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        LocationSource.stopListening()
     }
 
 }
