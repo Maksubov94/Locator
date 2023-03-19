@@ -45,8 +45,8 @@ object LocationSource {
         ) {
             initialize(context)
             locationManager?.apply {
-                requestLocationUpdates(LocationManager.GPS_PROVIDER, 0L, 5f, gpsListener)
-                requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0L, 5f, netListener)
+                requestLocationUpdates(LocationManager.GPS_PROVIDER, 0L, 0f, gpsListener)
+                requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0L, 0f, netListener)
             }
             true
         } else false
