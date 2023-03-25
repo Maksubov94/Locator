@@ -10,6 +10,9 @@ import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
 import com.maksubov.locator.FgLocationService
 import com.maksubov.locator.MainActivity
 import com.maksubov.locator.R
@@ -18,7 +21,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
 
-class HomeFragment: Fragment() {
+class HomeFragment: Fragment(){
 
     private lateinit var binding: HomeFragmentLayoutBinding
 
@@ -29,14 +32,18 @@ class HomeFragment: Fragment() {
     ): View {
         binding = HomeFragmentLayoutBinding.inflate(layoutInflater, container, false)
         return binding.root
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
         requireActivity().addMenuProvider(object : MenuProvider {
 
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
                 menuInflater.inflate(R.menu.home_toolbar_menu, menu)
+
             }
 
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
@@ -52,12 +59,15 @@ class HomeFragment: Fragment() {
 
         // зачем мы добавили viewLifecycleOwner, для чего
 
+
+
     }
     fun stopService(context: Context) {
         val stopIntent = Intent(context, FgLocationService::class.java)
         context.stopService(stopIntent)
         activity?.finish()
            }
+
 
 
 }

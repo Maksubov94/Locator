@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Locator</string>
     <string name="exit">EXIT</string>
+    <string name="weather">Weather</string>
+    <string name="start">Start</string>
+    <string name="statistics">Statistics</string>
+    <string name="cities">Cities</string>
+    <string name="steps">Steps</string>
 </resources>
