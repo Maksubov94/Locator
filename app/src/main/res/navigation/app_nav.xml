@@ -11,9 +11,16 @@
         <action
             android:id="@+id/action_homeFragment_to_detailsFragment"
             app:destination="@id/detailsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_statisticFragment"
+            app:destination="@id/statisticFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailsFragment"
         android:name="com.maksubov.locator.ui.DetailsFragment"
         android:label="DetailsFragment" />
+    <fragment
+        android:id="@+id/statisticFragment"
+        android:name="com.maksubov.locator.ui.StatisticFragment"
+        android:label="StatisticFragment" />
 </navigation>

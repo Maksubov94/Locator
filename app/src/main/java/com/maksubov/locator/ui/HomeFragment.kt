@@ -38,7 +38,6 @@ class HomeFragment: Fragment(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         requireActivity().addMenuProvider(object : MenuProvider {
 
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
@@ -56,6 +55,10 @@ class HomeFragment: Fragment(){
                 return true
             }
         }, viewLifecycleOwner)
+
+        binding.textView3.setOnClickListener {
+            findNavController().navigate(R.id.statisticFragment)
+        }
 
         // зачем мы добавили viewLifecycleOwner, для чего
 

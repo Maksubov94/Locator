@@ -10,4 +10,6 @@ class LocationRepository(
     suspend fun addNewLocation(location: LocationEntity) {
         dao.insertLocation(location)
     }
+
+    fun getDataByTime(time: Long) = dao.getAllLocationsByTime(time)
 }
