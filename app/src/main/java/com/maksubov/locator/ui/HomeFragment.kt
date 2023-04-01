@@ -56,7 +56,7 @@ class HomeFragment: Fragment(){
             }
         }, viewLifecycleOwner)
 
-        binding.textView3.setOnClickListener {
+        binding.tvStatistics.setOnClickListener {
             findNavController().navigate(R.id.statisticFragment)
         }
 

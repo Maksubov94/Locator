@@ -15,7 +15,9 @@ import org.koin.android.ext.android.inject
 class StatisticFragment: Fragment() {
 
     private lateinit var binding: StatisticsBinding
+
     private val viewModel: StatisticViewModel by inject()
+
     private val locationHandler by lazy { LocationHandler() }
 
     override fun onCreateView(
@@ -30,7 +32,7 @@ class StatisticFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        subscribe()
+      //  subscribe()
     }
 
     private fun subscribe() {

@@ -5,5 +5,10 @@
     <string name="start">Start</string>
     <string name="statistics">Statistics</string>
     <string name="cities">Cities</string>
-    <string name="steps">Steps</string>
+    <string name="steps">distance</string>
+    <string name="information">information</string>
+    <string name="name_city">Name city</string>
+    <string name="yesterday">yesterday</string>
+    <string name="quantity">quantity</string>
+    <string name="today">today</string>
 </resources>
