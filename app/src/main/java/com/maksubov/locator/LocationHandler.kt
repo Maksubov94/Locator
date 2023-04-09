@@ -1,10 +1,10 @@
 package com.maksubov.locator
 
-import android.content.ContentValues.TAG
-import android.util.Log
+import com.google.android.gms.maps.model.LatLng
 import com.google.maps.android.SphericalUtil
 import com.maksubov.locator.entity.LocationEntity
-import kotlin.math.log
+import java.text.DateFormat
+import java.util.*
 
 class LocationHandler {
 
@@ -16,21 +16,25 @@ class LocationHandler {
         )
     }
 
-    private fun calculateDistanceByList(data: List<LocationEntity>): Float {
-        //По пришедшему списку рассчитать пройденое(проеханное) расстояние
-
-        data
-
-        var  distance: Double = SphericalUtil.computeDistanceBetween();
-
-
+    private fun calculateDistanceByList(data: List<LocationEntity>): Double {
+        var previous = data.first()
+        var result = 0.0
+        for (i in 1 until data.size) {
+            val next = data[i]
+            result += SphericalUtil.computeDistanceBetween(
+                LatLng(previous.latitude, previous.longitude),
+                LatLng(next.latitude, next.longitude),
+            )
+            previous = next
+        }
+        return result
     }
 
     private fun calculateTime(data: List<LocationEntity>): String {
-
-
-        return "время которое потребовалось для прохождения"
-
+        val timeList = data.map { it.timeStamp }
+        val min = timeList.min()
+        val max = timeList.max()
+        return DateFormat.getDateInstance().format(Date(max - min))
     }
 
 

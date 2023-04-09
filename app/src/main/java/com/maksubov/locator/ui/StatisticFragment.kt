@@ -32,7 +32,7 @@ class StatisticFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-      //  subscribe()
+        subscribe()
     }
 
     private fun subscribe() {
@@ -45,6 +45,10 @@ class StatisticFragment: Fragment() {
 
     private fun handleLocation(data: List<LocationEntity>) {
         val handledInfo = locationHandler.handleData(data)
+        binding.apply {
+            tvStepsToday.text = handledInfo.distance.toString()
+            tvInformation.text = handledInfo.time
+        }
     }
 
 

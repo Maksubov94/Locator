@@ -9,7 +9,7 @@ import android.os.IBinder
 import androidx.core.app.NotificationCompat
 import com.maksubov.locator.data.repository.LocationRepository
 import kotlinx.coroutines.*
-import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.*
 import org.koin.android.ext.android.inject
 
 

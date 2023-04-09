@@ -82,7 +82,6 @@ object LocationSource {
         override fun onLocationChanged(location: Location) {
             currentLocation = location
             localScope.launch {
-
                 _locationFlow.emit(location)
             }
         }

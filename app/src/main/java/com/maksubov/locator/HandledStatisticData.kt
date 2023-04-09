@@ -1,6 +1,6 @@
 package com.maksubov.locator
 
 class HandledStatisticData(
-    val distance: Float,
+    val distance: Double,
     val time: String
 )
